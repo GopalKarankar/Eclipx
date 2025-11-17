@@ -32,7 +32,7 @@ const connect = () => {
 
 // Allow requests from React frontend
 app.use(cors({
-  origin: "http://localhost:3000", // frontend origin
+  origin: process.env.VITE_FRONTEND_URI, // frontend origin
   methods: ["GET", "POST", "PUT", "DELETE"], // allowed methods
   credentials: true // allows cookies/auth headers
 }));
