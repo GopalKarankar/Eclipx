@@ -10,8 +10,8 @@ import { useNavigate } from 'react-router-dom';
 
 // Initialize Supabase client
 const supabase = createClient(
-  process.env.SUPABASE_URL, //public url
-  process.env.SUPABASE_ANON_KEY 
+  process.env.VITE_SUPABASE_URL, //public url
+  process.env.VITE_SUPABASE_ANON_KEY 
   //Anon key
 );
 
