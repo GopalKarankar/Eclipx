@@ -46,7 +46,7 @@ const Comments = ({videoId, isLoggedIn}) => {
 
             try {
 
-                 await axios.post(`process.env.BACKEND_URI/api/comments/`,{
+                 await axios.post(`${process.env.BACKEND_URI}/api/comments/`,{
               
                   desc:inputComment,
                   videoId,
@@ -78,7 +78,7 @@ const Comments = ({videoId, isLoggedIn}) => {
               
               try {
             
-                const res = await axios.get(`process.env.BACKEND_URI/api/comments/${videoId}`);
+                const res = await axios.get(`${process.env.BACKEND_URI}/api/comments/${videoId}`);
             
                 // console.log(res.data);
                 

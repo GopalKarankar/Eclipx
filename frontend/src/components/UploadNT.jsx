@@ -98,7 +98,7 @@ function UploadNT({ setOpen }) {
   const postVideoDetails = async (videoUrl, imageUrl) => {
     try {
       await axios.post(
-        "process.env.BACKEND_URI/api/videos/",
+        "${process.env.BACKEND_URI}/api/videos/",
         {
           title,
           desc,

@@ -183,7 +183,7 @@ export const Upload = ({setOpen}) => {
 
                 console.log("Details uploaded successfully.");
 
-                await axios.post(`process.env.BACKEND_URI/api/videos/`,
+                await axios.post(`${process.env.BACKEND_URI}/api/videos/`,
                     {
                         title:title,
                         desc:desc,
