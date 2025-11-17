@@ -243,7 +243,7 @@ const Navbar = ({toggleInfo, setToggleInfo, open, setOpen}) => {
               
           </Search>
 
-          {currentUser ? (
+          {currentUser && (
 
             <User>
               <i
@@ -261,16 +261,7 @@ const Navbar = ({toggleInfo, setToggleInfo, open, setOpen}) => {
               {currentUser.name}
             </User>
           
-          ) : (
-          
-            <Link to="signin" style={{ textDecoration: "none" }}>
-              <Button>
-                <AccountCircleOutlinedIcon />
-                SIGN IN
-              </Button>
-            </Link>
-          
-          )}
+          ) }
 
           <Togglebtn className="btn ml-5" onClick={()=>{setToggleInfo({
               ...toggleInfo,
