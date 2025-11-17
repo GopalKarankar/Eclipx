@@ -10,13 +10,13 @@ import { useNavigate } from 'react-router-dom';
 
 // Initialize Supabase client
 const supabase = createClient(
-  process.env.SUPABASE_URL, //public url
-  process.env.SUPABASE_ANON_KEY 
+  "https://qaptekeguowshtiumgnb.supabase.co", //public url
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFhcHRla2VndW93c2h0aXVtZ25iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAxNTQzMDgsImV4cCI6MjA3NTczMDMwOH0.CZzwUa5CKRD0idV2bUvuzxZcpNH48oc-OFUKx87HxYM"
   //Anon key
 );
 
 // Base CDN URL for public bucket
-const CDNURL = process.env.CDN_URL;
+const CDNURL = "https://qaptekeguowshtiumgnb.supabase.co/storage/v1/object/public/video/";
 
 
 
