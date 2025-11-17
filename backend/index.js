@@ -32,7 +32,7 @@ const connect = () => {
 
 // Allow requests from React frontend
 app.use(cors({
-  origin: "https://eclipx-cznr.onrender.com", // frontend origin
+  origin: "https://eclipx-phi.vercel.app/", // frontend origin
   methods: ["GET", "POST", "PUT", "DELETE"], // allowed methods
   credentials: true // allows cookies/auth headers
 }));
