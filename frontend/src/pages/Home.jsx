@@ -53,7 +53,7 @@ const Home = ({type}) => {
 
           
 
-          const res = await axios.get(`${process.env.VITE_BACKEND_URI}/api/videos/${type}/`);
+          const res = await axios.get(`https://eclipx.onrender.com/api/videos/${type}/`);
 
 
           setVideo(res.data);

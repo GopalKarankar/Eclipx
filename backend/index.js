@@ -32,7 +32,7 @@ const connect = () => {
 
 // Allow requests from React frontend
 app.use(cors({
-  origin: process.env.VITE_FRONTEND_URI, // frontend origin
+  origin: "https://eclipx-86jh.onrender.com", // frontend origin
   methods: ["GET", "POST", "PUT", "DELETE"], // allowed methods
   credentials: true // allows cookies/auth headers
 }));

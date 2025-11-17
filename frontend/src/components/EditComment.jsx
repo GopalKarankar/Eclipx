@@ -71,7 +71,7 @@ export const EditComment = ({setOpenEditComment, comment, setOpenCommentId, vide
             
             setLoading(true);
 
-            const res = await axios.put(`${process.env.VITE_BACKEND_URI}/api/comments/editcomment/${comment._id}`,
+            const res = await axios.put(`https://eclipx.onrender.com/api/comments/editcomment/${comment._id}`,
                 {
                     desc:desc,
                 },
