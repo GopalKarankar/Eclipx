@@ -156,7 +156,7 @@ const Navbar = ({toggleInfo, setToggleInfo, open, setOpen}) => {
         
           setQuery(e.target.value);
 
-          const res = await axios.get(`${process.env.BACKEND_URI}/api/videos/search?q=${query}`);
+          const res = await axios.get(`${process.env.VITE_BACKEND_URI}/api/videos/search?q=${query}`);
 
           setVideoSugg(res.data || []);
         

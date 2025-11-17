@@ -109,7 +109,7 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
     
         const fetchChannel = async () => {
           
-          const res = await axios.get(`${process.env.BACKEND_URI}/api/users/find/${video.userId}`);
+          const res = await axios.get(`${process.env.VITE_BACKEND_URI}/api/users/find/${video.userId}`);
 
           setChannel(res?.data);
 
@@ -130,7 +130,7 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
           // Unsave video
           if (currentUser.savedVideos.includes(video._id)) {
   
-              const res = await axios.put(`${process.env.BACKEND_URI}/api/users/unsavevideo/${video._id}`);
+              const res = await axios.put(`${process.env.VITE_BACKEND_URI}/api/users/unsavevideo/${video._id}`);
               
               dispatch(saved(video._id));
 
@@ -139,7 +139,7 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
           // Save video
           } else {
   
-              const res = await axios.put(`${process.env.BACKEND_URI}/api/users/savevideo/${video._id}`);
+              const res = await axios.put(`${process.env.VITE_BACKEND_URI}/api/users/savevideo/${video._id}`);
               
               dispatch(saved(video._id));
 
@@ -164,7 +164,7 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
         
         if(confirmDelete){
 
-            const res = await axios.delete(`${process.env.BACKEND_URI}/api/videos/delete/${video._id}`);
+            const res = await axios.delete(`${process.env.VITE_BACKEND_URI}/api/videos/delete/${video._id}`);
 
             console.log(res.data);
 
