@@ -307,6 +307,7 @@ const Video = () => {
 
   }
 
+  console.log(currentVideo.videoUrl);
 
   return (
     <Container>
