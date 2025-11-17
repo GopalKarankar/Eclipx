@@ -50,11 +50,11 @@ const Home = ({type}) => {
 
       const fetchVideos = async () => {
 
-<<<<<<< HEAD
+
           const res = await axios.get(`${process.env.BACKEND_URI}/api/videos/${type}/`);
-=======
+
           const res = await axios.get(`${process.env.VITE_BACKEND_URI}/api/videos/${type}/`);
->>>>>>> fa699c2cf901c197cb7d936a50339fb2373749b5
+
 
           setVideo(res.data);
 
