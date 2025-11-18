@@ -171,12 +171,37 @@ const Video = () => {
       try{
 
         const videoRes = await axios.get(`https://eclipx.onrender.com/api/videos/find/${path}`);
-        const channelRes = await axios.get(`https://eclipx.onrender.com/api/users/find/${videoRes.data.userId}`);
+        // const channelRes = await axios.get(`https://eclipx.onrender.com/api/users/find/${videoRes.data.userId}`);
 
         // dispatch(fetchSuccess(videoRes.data));
 
         setVideo(videoRes.data);
         // setChannel(channelRes.data);
+
+      }catch(error){
+          console.log(error);
+      }
+
+    }
+
+    fetchData();
+
+  }, [path]);
+
+
+  // Run on page visit , or any value change
+  useEffect(()=>{
+
+    // Get video by id
+    const fetchData = async () =>{
+
+      try{
+
+        const channelRes = await axios.get(`https://eclipx.onrender.com/api/users/find/${video.userId}`);
+
+        // dispatch(fetchSuccess(videoRes.data));
+
+        setChannel(channelRes.data);
 
       }catch(error){
           console.log(error);
