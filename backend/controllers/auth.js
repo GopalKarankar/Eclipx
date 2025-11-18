@@ -80,25 +80,26 @@ export const signin = async (req, res, next) => {
 export const googleAuth = async (req, res, next) => {
   try {
 
-    // Validate required fields
-    if (!req.body.email) {
-      return next(createError(400, "Email is required for Google authentication"));
-    }
+            // Validate required fields
+            if (!req.body.email) {
+            return next(createError(400, "Email is required for Google authentication"));
+            }
 
-    // Check if the same email already exists
-    const user = await User.findOne({ email: req.body.email });
+            // Check if the same email already exists
+            const user = await User.findOne({ email: req.body.email });
 
           // If same user exists
           if (user) {
 
-              // Create token with expiry (30 days)
+              // Create token to be joint with cookie with expiry (30 days)
               const token = jwt.sign({ id: user._id }, process.env.JWT_PRIVATE_KEY, { expiresIn: "30d" });                      
               
               // Exclude password from user info
               const {password , ...excludePasswordInfo} = user._doc;
 
               // Send "cookies that includes token" , along with "user info"   
-              res.cookie("access_token", token, { httpOnly: true,
+              res.cookie("access_token", token, 
+                {   httpOnly: true,
                     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds,
                     sameSite:"none",
                     secure:true
