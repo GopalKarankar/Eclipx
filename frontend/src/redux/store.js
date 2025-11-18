@@ -11,7 +11,7 @@ import {
 import storage from 'redux-persist/lib/storage'
 import userReducer from './userSlice'
 import  videoReducer from './videoSlice';
-import  commntReducer from './commentSlice';
+import  commentReducer from './commentSlice';
 
 
 
@@ -21,7 +21,7 @@ const persistConfig = {
   storage,
 }
 
-const rootReducer = combineReducers({user:userReducer, video:videoReducer, comment:commntReducer});
+const rootReducer = combineReducers({user:userReducer, video:videoReducer, comment:commentReducer});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
@@ -36,6 +36,8 @@ export const store = configureStore({
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
       }),
+
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
 export const persistor = persistStore(store);

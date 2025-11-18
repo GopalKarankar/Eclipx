@@ -2,10 +2,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    currentUser:null,
-    loading:false,
-    error:false,
-    isLoggedIn:false
+    comments: [],
+    loading: false,
+    error: false,
 };
 
 export const commentSlice = createSlice({
@@ -17,14 +16,26 @@ export const commentSlice = createSlice({
 
         commentAdd:(state, action)=>{
             state.loading = false;
-            state.currentUser = action.payload;
-            state.isLoggedIn = true;
+            state.comments.push(action.payload);
+        },
+
+        commentDelete:(state, action)=>{
+            state.comments = state.comments.filter(comment => comment._id !== action.payload);
+        },
+
+        commentStart:(state)=>{
+            state.loading = true;
+        },
+
+        commentFailure:(state)=>{
+            state.loading = false;
+            state.error = true;
         },
 
 }
 })
 
-export const {login, loginStart, loginFailure, loginSuccess, logout, subscription} = commentSlice.actions;
+export const {commentAdd, commentDelete, commentStart, commentFailure} = commentSlice.actions;
 export default commentSlice.reducer;
 
 
