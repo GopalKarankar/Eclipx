@@ -76,6 +76,18 @@ const Glogo = styled.img`
   height: 40px;
 `;
 
+
+const Input = styled.input`
+  border: none;
+  border-bottom: 1px solid ${({ theme }) => theme.soft};
+  color: ${({ theme }) => theme.text};
+  background-color: transparent;
+  outline: none;
+  padding: 5px;
+  width: 100%;
+`;
+
+
 const SignIn = () => {
 
   const [info, setInfo] = useState({
@@ -183,11 +195,11 @@ const SignIn = () => {
 
         <SubTitle>Sign in to continue to Eclipx</SubTitle>
         
-        {/* <Input placeholder="username" name="username" type="text" value={info.name} onChange={ (e)=>{setUser(e)}  } />
+        <Input placeholder="username" name="username" type="text" value={info.name} onChange={ (e)=>{setUser(e)}  } />
         <Input type="password" placeholder="password" name="password"  value={info.password} onChange={(e)=>{setUser(e)}} autoComplete="off"  />
         <Button onClick={handleLogin} >Sign in</Button>
         
-        <Title>or</Title> */}
+        <Title>or</Title>
         <Button onClick={signInWithGoogle}> <Glogo src={GoogleLogo} alt="" />  Sign in with google</Button>
 
       </Wrapper>
