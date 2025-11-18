@@ -17,18 +17,20 @@ const Home = ({type}) => {
   
   
   axios.defaults.withCredentials = true;
+
+    const currentVideo = useSelector(state=> state?.video?.currentVideo);
   
+    const currentUser = useSelector(state=> state?.user?.currentUser);
+
    const [openVideoId, setOpenVideoId] = useState(null);
 
-  const currentVideo = useSelector(state=> state?.video?.currentVideo);
-  
-  const currentUser = useSelector(state=> state?.user?.currentUser);
-   
-  const [video, setVideo]= useState([]);
+    const [isLoading, setLoading] = useState(false);
 
-  const location = useLocation();
+    const [video, setVideo]= useState([]);
 
-  const videoData = location.state;
+    const location = useLocation();
+
+    const videoData = location.state;
 
 
 
@@ -37,30 +39,34 @@ const Home = ({type}) => {
     
     if (videoData) {
 
+      setLoading(true);
+
       const handleSearch = async () => {
 
           // setVideo(res.data);
           setVideo(videoData);
-
+        
+          setLoading(false);
       }
 
       handleSearch();
 
     } else {
 
-      const fetchVideos = async () => {
+      setLoading(true);
 
-
-          
+      const fetchVideos = async () => {          
 
           const res = await axios.get(`https://eclipx.onrender.com/api/videos/${type}/`);
 
-
           setVideo(res.data);
+
+          setLoading(false);
 
       }
 
         fetchVideos();
+
       
     }
 
@@ -68,6 +74,12 @@ const Home = ({type}) => {
 
 
   
+  if (isLoading === true) {
+    return  <div style={{textAlign: "center"}}>
+                <p style={{color:"Green"}}>Loading...</p>
+            </div>;    
+  }
+
   if (video.length===0) {
     return  <div style={{textAlign: "center"}}>
                 <p style={{color:"red"}}>No videos Found</p>
