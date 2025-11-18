@@ -110,6 +110,8 @@ export const googleAuth = async (req, res, next) => {
               // Create new Google user (use "new" to create new info )
               const newUser = new User({ ...req.body, fromGoogle: true });
 
+              console.log("newuser : ",newUser);
+
               // Save info to database
               const savedUser = await newUser.save();
 
