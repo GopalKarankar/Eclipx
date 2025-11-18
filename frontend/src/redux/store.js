@@ -38,3 +38,12 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+// Expose the store for debugging in the browser console (safe helper)
+try {
+  if (typeof window !== 'undefined') {
+    window.__ECLIPX_STORE__ = store;
+  }
+} catch (err) {
+  // ignore
+}

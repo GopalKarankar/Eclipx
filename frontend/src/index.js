@@ -9,7 +9,17 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate
+        loading={null}
+        persistor={persistor}
+        onBeforeLift={() => {
+          try {
+            console.log('PersistGate: rehydration complete. store state:', store.getState());
+          } catch (err) {
+            console.warn('PersistGate: unable to read store state', err);
+          }
+        }}
+      >
         <App />
       </PersistGate>
     </Provider>
