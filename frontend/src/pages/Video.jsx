@@ -155,7 +155,7 @@ const Video = () => {
 
   const [channel, setChannel] = useState({});
 
-  const [video, setVideo] = useState("");
+  const [video, setVideo] = useState({});
 
   const [isViewCounted, setIsViewCounted] = useState(false);
 
