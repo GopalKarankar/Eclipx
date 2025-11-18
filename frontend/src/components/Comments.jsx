@@ -46,7 +46,7 @@ const Comments = ({videoId, isLoggedIn}) => {
 
             try {
 
-                 await axios.post(`https://eclipx-six.vercel.app//api/comments/`,{
+                 await axios.post(`https://eclipx.onrender.com//api/comments/`,{
               
                   desc:inputComment,
                   videoId,
@@ -78,7 +78,7 @@ const Comments = ({videoId, isLoggedIn}) => {
               
               try {
             
-                const res = await axios.get(`https://eclipx-six.vercel.app//api/comments/${videoId}`);
+                const res = await axios.get(`https://eclipx.onrender.com//api/comments/${videoId}`);
             
                 // console.log(res.data);
                 

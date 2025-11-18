@@ -54,5 +54,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "${process.env.BACKEND_URI}/api/"
+  "proxy": "https://eclipx.onrender.com"
 }
