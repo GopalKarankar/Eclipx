@@ -34,10 +34,11 @@ export const store = configureStore({
       getDefaultMiddleware({
         serializableCheck: {
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+          ignoredPaths: ['persist/PERSIST'],
         },
       }),
 
-  devTools: process.env.NODE_ENV !== 'production',
+  devTools: true,
 });
 
 export const persistor = persistStore(store);

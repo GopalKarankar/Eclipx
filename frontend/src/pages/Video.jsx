@@ -307,14 +307,16 @@ const Video = () => {
 
   }
 
-  console.log(currentVideo.videoUrl);
+  if (!currentVideo) {
+    return <div style={{textAlign: "center", color: "red"}}>Loading video...</div>;
+  }
 
   return (
     <Container>
           <Content>
             
             <VideoWrapper >
-                <VideoFrame src={currentVideo.videoUrl}  controls  
+                <VideoFrame src={currentVideo?.videoUrl}  controls  
                     onTimeUpdate={(e) => {
 
                         const currentTime = e.target.currentTime;
@@ -329,32 +331,32 @@ const Video = () => {
                 />
             </VideoWrapper>
             
-            <Title>{currentVideo.title}</Title>
+            <Title>{currentVideo?.title}</Title>
 
             <Details>
 
-              <Info>{currentVideo.views} views • {format(currentVideo.createdAt)}</Info>
+              <Info>{currentVideo?.views} views • {format(currentVideo?.createdAt)}</Info>
 
 
               <Buttons>
 
-                {isLoggedIn && 
+                {isLoggedIn && currentUser &&
                     <>
                       <Button onClick={handleLike}>
-                          {currentVideo.likes?.includes(currentUser?._id) ? <i className="fa-regular fa-thumbs-up "></i> :  <i className="fa-regular fa-thumbs-up  "></i> } {currentVideo.likes?.length}
+                          {currentVideo?.likes?.includes(currentUser?._id) ? <i className="fa-regular fa-thumbs-up "></i> :  <i className="fa-regular fa-thumbs-up  "></i> } {currentVideo?.likes?.length}
                       </Button>
                     
                       <Button onClick={handleDislike}>
-                          {currentVideo.dislikes?.includes(currentUser?._id) ? <i className="fa-regular fa-thumbs-down  "></i> : <i className="fa-regular fa-thumbs-down"></i>  } {currentVideo.dislikes?.length}
+                          {currentVideo?.dislikes?.includes(currentUser?._id) ? <i className="fa-regular fa-thumbs-down  "></i> : <i className="fa-regular fa-thumbs-down"></i>  } {currentVideo?.dislikes?.length}
                       </Button>
                     </>            
                 }
               
                   <ShareButton url={`${currentVideo?._id}`} />
               
-              {isLoggedIn &&
+              {isLoggedIn && currentUser &&
                 <Button onClick={handleSave} >
-                  <AddTaskOutlinedIcon />{currentVideo.isSavedByUsers.includes(currentUser?._id) ? "Unsave" : "Save"}
+                  <AddTaskOutlinedIcon />{currentVideo?.isSavedByUsers?.includes(currentUser?._id) ? "Unsave" : "Save"}
                 </Button>          
               }
               
@@ -368,15 +370,15 @@ const Video = () => {
               <ChannelInfo>
                 <Image src={channel.img} />
                 <ChannelDetail>
-                  <ChannelName>{channel.name}</ChannelName>
-                  <ChannelCounter>{channel.subscribers} subscribers</ChannelCounter>
+                  <ChannelName>{channel?.name}</ChannelName>
+                  <ChannelCounter>{channel?.subscribers} subscribers</ChannelCounter>
                   {/* <Description>
                         {currentVideo.desc}
                   </Description> */}
                 </ChannelDetail>
               </ChannelInfo>
 
-                    { isLoggedIn &&
+                    { isLoggedIn && currentUser &&
                       <Subscribe onClick={handleSub} >{currentUser?.subscribedUsers?.includes(channel?._id) ? "SUBSCRIBED" : "SUBSCRIBE"}</Subscribe>                
                     }
             
