@@ -109,7 +109,7 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
     
         const fetchChannel = async () => {
           
-          const res = await axios.get(`eclipx-phi.vercel.app/api/users/find/${video.userId}`);
+          const res = await axios.get(`https://eclipx-six.vercel.app//api/users/find/${video.userId}`);
 
           setChannel(res?.data);
 
@@ -130,7 +130,7 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
           // Unsave video
           if (currentUser.savedVideos.includes(video._id)) {
   
-              const res = await axios.put(`eclipx-phi.vercel.app/api/users/unsavevideo/${video._id}`);
+              const res = await axios.put(`https://eclipx-six.vercel.app//api/users/unsavevideo/${video._id}`);
               
               dispatch(saved(video._id));
 
@@ -139,7 +139,7 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
           // Save video
           } else {
   
-              const res = await axios.put(`eclipx-phi.vercel.app/api/users/savevideo/${video._id}`);
+              const res = await axios.put(`https://eclipx-six.vercel.app//api/users/savevideo/${video._id}`);
               
               dispatch(saved(video._id));
 
@@ -164,7 +164,7 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
         
         if(confirmDelete){
 
-            const res = await axios.delete(`eclipx-phi.vercel.app/api/videos/delete/${video._id}`);
+            const res = await axios.delete(`https://eclipx-six.vercel.app//api/videos/delete/${video._id}`);
 
             console.log(res.data);
 

@@ -98,7 +98,7 @@ function UploadNT({ setOpen }) {
   const postVideoDetails = async (videoUrl, imageUrl) => {
     try {
       await axios.post(
-        "eclipx-phi.vercel.app/api/videos/",
+        "https://eclipx-six.vercel.app//api/videos/",
         {
           title,
           desc,

@@ -76,7 +76,7 @@ const Comment = ({comment, setOpenCommentId, openCommentId, videoId}) => {
       const fetchComment = async () => {
 
         try {
-            const res = await axios.get(`eclipx-phi.vercel.app/api/users/find/${comment.userId}`);
+            const res = await axios.get(`https://eclipx-six.vercel.app//api/users/find/${comment.userId}`);
             
             setChannel(res.data);
           
@@ -102,7 +102,7 @@ const Comment = ({comment, setOpenCommentId, openCommentId, videoId}) => {
         
         if(confirmDelete){
 
-            const res = await axios.delete(`eclipx-phi.vercel.app/api/comments/${comment._id}`);
+            const res = await axios.delete(`https://eclipx-six.vercel.app//api/comments/${comment._id}`);
 
             console.log(res.data);
 

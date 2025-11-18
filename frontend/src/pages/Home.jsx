@@ -53,7 +53,7 @@ const Home = ({type}) => {
 
           
 
-          const res = await axios.get(`eclipx-phi.vercel.app/api/videos/${type}/`);
+          const res = await axios.get(`https://eclipx-six.vercel.app//api/videos/${type}/`);
 
 
           setVideo(res.data);

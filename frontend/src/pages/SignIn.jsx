@@ -121,7 +121,7 @@ const SignIn = () => {
 
       try{
 
-          const res = await axios.post(`eclipx-phi.vercel.app/api/auth/signin/`, {
+          const res = await axios.post(`https://eclipx-six.vercel.app//api/auth/signin/`, {
               name: info.username,
               password: info.password
             });
@@ -145,7 +145,7 @@ const SignIn = () => {
 
     signInWithPopup(auth, provider).then((result)=>{
 
-       axios.post(`eclipx-phi.vercel.app/api/auth/google/`,{
+       axios.post(`https://eclipx-six.vercel.app//api/auth/google/`,{
       
         name:result.user.displayName,
         email:result.user.email,
