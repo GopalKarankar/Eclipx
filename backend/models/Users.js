@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
 
     password:{
         type:String,
-        select: false,
+        default: null,
     },
 
     img:{
