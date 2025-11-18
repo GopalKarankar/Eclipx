@@ -10,7 +10,7 @@ import {getAuth, GoogleAuthProvider} from 'firebase/auth';
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyAmx6n4IDQpSxWBcu93sDbqytIYYKnlmhY",
-  authDomain: "video-1f884.firebaseapp.com",
+  authDomain: "https://eclipx-cznr.onrender.com",
   projectId: "video-1f884",
   storageBucket: "video-1f884.firebasestorage.app",
   messagingSenderId: "373887744107",
