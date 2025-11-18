@@ -186,7 +186,7 @@ const Video = () => {
 
     fetchData();
 
-  }, [path, dispatch , currentUser, video]);
+  }, [path]);
 
 
       // Increse view count of video
