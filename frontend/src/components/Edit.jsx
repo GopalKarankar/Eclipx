@@ -199,7 +199,7 @@ export const Edit = ({setOpenVideoId,setOpenEdit , ...video}) => {
 
                 console.log("Details uploaded successfully.");
 
-                await axios.put(`https://eclipx.onrender.com/api/videos/updatevideo/${video?.video?._id}`,
+                await axios.put(`eclipx-phi.vercel.app/api/videos/updatevideo/${video?.video?._id}`,
                     {
                         title:title,
                         desc:desc,

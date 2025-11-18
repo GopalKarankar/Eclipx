@@ -183,7 +183,7 @@ export const Upload = ({setOpen}) => {
 
                 console.log("Details uploaded successfully.");
 
-                await axios.post(`https://eclipx.onrender.com/api/videos/`,
+                await axios.post(`eclipx-phi.vercel.app/api/videos/`,
                     {
                         title:title,
                         desc:desc,
