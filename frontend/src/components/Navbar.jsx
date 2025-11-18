@@ -156,7 +156,7 @@ const Navbar = ({toggleInfo, setToggleInfo, open, setOpen}) => {
         
           setQuery(e.target.value);
 
-          const res = await axios.get(`https://eclipx.onrender.com//api/videos/search?q=${query}`);
+          const res = await axios.get(`https://eclipx.onrender.com/api/videos/search?q=${query}`);
 
           setVideoSugg(res.data || []);
         

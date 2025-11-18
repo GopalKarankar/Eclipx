@@ -98,7 +98,7 @@ function UploadNT({ setOpen }) {
   const postVideoDetails = async (videoUrl, imageUrl) => {
     try {
       await axios.post(
-        "https://eclipx.onrender.com//api/videos/",
+        "https://eclipx.onrender.com/api/videos/",
         {
           title,
           desc,

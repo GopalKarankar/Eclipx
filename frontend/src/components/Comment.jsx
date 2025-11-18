@@ -76,7 +76,7 @@ const Comment = ({comment, setOpenCommentId, openCommentId, videoId}) => {
       const fetchComment = async () => {
 
         try {
-            const res = await axios.get(`https://eclipx.onrender.com//api/users/find/${comment.userId}`);
+            const res = await axios.get(`https://eclipx.onrender.com/api/users/find/${comment.userId}`);
             
             setChannel(res.data);
           
@@ -102,7 +102,7 @@ const Comment = ({comment, setOpenCommentId, openCommentId, videoId}) => {
         
         if(confirmDelete){
 
-            const res = await axios.delete(`https://eclipx.onrender.com//api/comments/${comment._id}`);
+            const res = await axios.delete(`https://eclipx.onrender.com/api/comments/${comment._id}`);
 
             console.log(res.data);
 

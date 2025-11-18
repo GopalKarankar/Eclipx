@@ -161,7 +161,7 @@ const Video = () => {
           // Increse view count of video
         const incrViewCount = async () => {
 
-            await axios.put(`https://eclipx.onrender.com//api/videos/view/${currentVideo?._id}`,
+            await axios.put(`https://eclipx.onrender.com/api/videos/view/${currentVideo?._id}`,
               {
 
               },
@@ -182,8 +182,8 @@ const Video = () => {
 
       try{
 
-        const videoRes = await axios.get(`https://eclipx.onrender.com//api/videos/find/${path}`);
-        const channelRes = await axios.get(`https://eclipx.onrender.com//api/users/find/${videoRes.data.userId}`);
+        const videoRes = await axios.get(`https://eclipx.onrender.com/api/videos/find/${path}`);
+        const channelRes = await axios.get(`https://eclipx.onrender.com/api/users/find/${videoRes.data.userId}`);
 
         dispatch(fetchSuccess(videoRes.data));
 
@@ -207,7 +207,7 @@ const Video = () => {
   const handleLike = async () => {
     try {
       await axios.put(
-        `https://eclipx.onrender.com//api/users/like/${currentVideo?._id}`,
+        `https://eclipx.onrender.com/api/users/like/${currentVideo?._id}`,
         {},
         { withCredentials: true } 
       );
@@ -227,7 +227,7 @@ const Video = () => {
     try {
 
       await axios.put(
-        `https://eclipx.onrender.com//api/users/dislike/${currentVideo._id}`,
+        `https://eclipx.onrender.com/api/users/dislike/${currentVideo._id}`,
         {},
         { withCredentials: true } 
       );
@@ -250,7 +250,7 @@ const Video = () => {
             if (currentUser.subscribedUsers.includes(channel._id)){
 
                 await axios.put(
-                  `https://eclipx.onrender.com//api/users/unsub/${channel._id}`,
+                  `https://eclipx.onrender.com/api/users/unsub/${channel._id}`,
                     {},
                     { withCredentials: true } 
                   );
@@ -260,7 +260,7 @@ const Video = () => {
             }else{
 
                   await axios.put(
-                  `https://eclipx.onrender.com//api/users/sub/${channel._id}`,
+                  `https://eclipx.onrender.com/api/users/sub/${channel._id}`,
                     {},
                     { withCredentials: true } 
                   );
@@ -285,7 +285,7 @@ const Video = () => {
 
         if (currentUser.savedVideos.includes(currentVideo._id)) {
 
-            const res = await axios.put(`https://eclipx.onrender.com//api/users/unsavevideo/${currentVideo._id}`);
+            const res = await axios.put(`https://eclipx.onrender.com/api/users/unsavevideo/${currentVideo._id}`);
             
             dispatch(saved(currentVideo._id));
 
@@ -293,7 +293,7 @@ const Video = () => {
           
         } else {
 
-            const res = await axios.put(`https://eclipx.onrender.com//api/users/savevideo/${currentVideo._id}`);
+            const res = await axios.put(`https://eclipx.onrender.com/api/users/savevideo/${currentVideo._id}`);
             
             dispatch(saved(currentVideo._id));
 
