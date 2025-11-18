@@ -146,7 +146,7 @@ const Subscribe = styled.button`
 const Video = () => {
 
   const currentUser = useSelector(state=> state?.user?.currentUser);
-  const currentVideo = useSelector(state=> state?.video?.currentVideo);
+  // const video = useSelector(state=> state?.video?.video);
   const isLoggedIn = useSelector(state=> state?.user?.isLoggedIn);  
 
   const dispatch = useDispatch();
@@ -155,23 +155,11 @@ const Video = () => {
 
   const [channel, setChannel] = useState({});
 
+  const [video, setVideo] = useState("");
+
   const [isViewCounted, setIsViewCounted] = useState(false);
 
 
-          // Increse view count of video
-        const incrViewCount = async () => {
-
-            await axios.put(`https://eclipx.onrender.com/api/videos/view/${currentVideo?._id}`,
-              {
-
-              },
-              {
-                withCredentials:true,
-              }
-            );
-
-        }
-        
 
 
   // Run on page visit , or any value change
@@ -185,10 +173,10 @@ const Video = () => {
         const videoRes = await axios.get(`https://eclipx.onrender.com/api/videos/find/${path}`);
         const channelRes = await axios.get(`https://eclipx.onrender.com/api/users/find/${videoRes.data.userId}`);
 
-        dispatch(fetchSuccess(videoRes.data));
+        // dispatch(fetchSuccess(videoRes.data));
 
-        // setVideo(videoRes.data);
-        setChannel(channelRes.data);
+        setVideo(videoRes.data);
+        // setChannel(channelRes.data);
 
       }catch(error){
           console.log(error);
@@ -198,16 +186,30 @@ const Video = () => {
 
     fetchData();
 
-  }, [path, dispatch , currentUser, currentVideo]);
+  }, [path, dispatch , currentUser, video]);
 
 
+      // Increse view count of video
+    const incrViewCount = async () => {
+
+        await axios.put(`https://eclipx.onrender.com/api/videos/view/${video?._id}`,
+          {
+
+          },
+          {
+            withCredentials:true,
+          }
+        );
+
+    }
+        
 
 
   // for liking
   const handleLike = async () => {
     try {
       await axios.put(
-        `https://eclipx.onrender.com/api/users/like/${currentVideo?._id}`,
+        `https://eclipx.onrender.com/api/users/like/${video?._id}`,
         {},
         { withCredentials: true } 
       );
@@ -227,7 +229,7 @@ const Video = () => {
     try {
 
       await axios.put(
-        `https://eclipx.onrender.com/api/users/dislike/${currentVideo._id}`,
+        `https://eclipx.onrender.com/api/users/dislike/${video._id}`,
         {},
         { withCredentials: true } 
       );
@@ -283,19 +285,19 @@ const Video = () => {
       
       try {
 
-        if (currentUser.savedVideos.includes(currentVideo._id)) {
+        if (currentUser.savedVideos.includes(video._id)) {
 
-            const res = await axios.put(`https://eclipx.onrender.com/api/users/unsavevideo/${currentVideo._id}`);
+            const res = await axios.put(`https://eclipx.onrender.com/api/users/unsavevideo/${video._id}`);
             
-            dispatch(saved(currentVideo._id));
+            dispatch(saved(video._id));
 
             // console.log(res);
           
         } else {
 
-            const res = await axios.put(`https://eclipx.onrender.com/api/users/savevideo/${currentVideo._id}`);
+            const res = await axios.put(`https://eclipx.onrender.com/api/users/savevideo/${video._id}`);
             
-            dispatch(saved(currentVideo._id));
+            dispatch(saved(video._id));
 
             // console.log(res);
           
@@ -307,7 +309,7 @@ const Video = () => {
 
   }
 
-  if (!currentVideo) {
+  if (!video) {
     return <div style={{textAlign: "center", color: "red"}}>Loading video...</div>;
   }
 
@@ -316,7 +318,7 @@ const Video = () => {
           <Content>
             
             <VideoWrapper >
-                <VideoFrame src={currentVideo?.videoUrl}  controls  
+                <VideoFrame src={video?.videoUrl}  controls  
                     onTimeUpdate={(e) => {
 
                         const currentTime = e.target.currentTime;
@@ -331,11 +333,11 @@ const Video = () => {
                 />
             </VideoWrapper>
             
-            <Title>{currentVideo?.title}</Title>
+            <Title>{video?.title}</Title>
 
             <Details>
 
-              <Info>{currentVideo?.views} views • {format(currentVideo?.createdAt)}</Info>
+              <Info>{video?.views} views • {format(video?.createdAt)}</Info>
 
 
               <Buttons>
@@ -343,20 +345,20 @@ const Video = () => {
                 {isLoggedIn && currentUser &&
                     <>
                       <Button onClick={handleLike}>
-                          {currentVideo?.likes?.includes(currentUser?._id) ? <i className="fa-regular fa-thumbs-up "></i> :  <i className="fa-regular fa-thumbs-up  "></i> } {currentVideo?.likes?.length}
+                          {video?.likes?.includes(currentUser?._id) ? <i className="fa-regular fa-thumbs-up "></i> :  <i className="fa-regular fa-thumbs-up  "></i> } {video?.likes?.length}
                       </Button>
                     
                       <Button onClick={handleDislike}>
-                          {currentVideo?.dislikes?.includes(currentUser?._id) ? <i className="fa-regular fa-thumbs-down  "></i> : <i className="fa-regular fa-thumbs-down"></i>  } {currentVideo?.dislikes?.length}
+                          {video?.dislikes?.includes(currentUser?._id) ? <i className="fa-regular fa-thumbs-down  "></i> : <i className="fa-regular fa-thumbs-down"></i>  } {video?.dislikes?.length}
                       </Button>
                     </>            
                 }
               
-                  <ShareButton url={`${currentVideo?._id}`} />
+                  <ShareButton url={`${video?._id}`} />
               
               {isLoggedIn && currentUser &&
                 <Button onClick={handleSave} >
-                  <AddTaskOutlinedIcon />{currentVideo?.isSavedByUsers?.includes(currentUser?._id) ? "Unsave" : "Save"}
+                  <AddTaskOutlinedIcon />{video?.isSavedByUsers?.includes(currentUser?._id) ? "Unsave" : "Save"}
                 </Button>          
               }
               
@@ -373,7 +375,7 @@ const Video = () => {
                   <ChannelName>{channel?.name}</ChannelName>
                   <ChannelCounter>{channel?.subscribers} subscribers</ChannelCounter>
                   {/* <Description>
-                        {currentVideo.desc}
+                        {video.desc}
                   </Description> */}
                 </ChannelDetail>
               </ChannelInfo>
@@ -386,7 +388,7 @@ const Video = () => {
             
             <Hr />            
 
-            <Comments videoId={currentVideo?._id} isLoggedIn={isLoggedIn} />
+            <Comments videoId={video?._id} isLoggedIn={isLoggedIn} />
 
       </Content>
 
