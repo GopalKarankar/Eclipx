@@ -80,14 +80,19 @@ export const signin = async (req, res, next) => {
 export const googleAuth = async (req, res, next) => {
   try {
 
+    // Validate required fields
+    if (!req.body.email) {
+      return next(createError(400, "Email is required for Google authentication"));
+    }
+
     // Check if the same email already exists
     const user = await User.findOne({ email: req.body.email });
 
           // If same user exists
           if (user) {
 
-              // Create token
-              const token = jwt.sign({ id: user._id }, process.env.JWT_PRIVATE_KEY);                      
+              // Create token with expiry (30 days)
+              const token = jwt.sign({ id: user._id }, process.env.JWT_PRIVATE_KEY, { expiresIn: "30d" });                      
               
               // Exclude password from user info
               const {password , ...excludePasswordInfo} = user._doc;
@@ -107,7 +112,7 @@ export const googleAuth = async (req, res, next) => {
               // Save info to database
               const savedUser = await newUser.save();
 
-              const token = jwt.sign({ id: savedUser._id }, process.env.JWT_PRIVATE_KEY);
+              const token = jwt.sign({ id: savedUser._id }, process.env.JWT_PRIVATE_KEY, { expiresIn: "30d" });
                               
               const {password , ...excludePasswordInfo} = savedUser._doc;
 
@@ -123,7 +128,7 @@ export const googleAuth = async (req, res, next) => {
   } catch (error) {
     
         console.error("Google Auth Error:", error);
-        next(error);
+        next(createError(500, "Google authentication failed"));
   
     }
 
