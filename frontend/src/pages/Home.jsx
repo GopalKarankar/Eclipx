@@ -53,7 +53,7 @@ const Home = ({type}) => {
 
           
 
-          const res = await axios.get(`https://eclipx.onrender.com//api/videos/${type}/`);
+          const res = await axios.get(`https://eclipx.onrender.com/api/videos/${type}/`);
 
 
           setVideo(res.data);
@@ -69,9 +69,9 @@ const Home = ({type}) => {
 
   
   if (video.length===0) {
-    return  <center>
+    return  <div style={{textAlign: "center"}}>
                 <p style={{color:"red"}}>No videos Found</p>
-            </center>;
+            </div>;
   }
 
 
@@ -80,8 +80,7 @@ const Home = ({type}) => {
           { 
                 video.map( (video) => {
                   return  <Card key={video._id} video={video} type={type}  openVideoId={openVideoId} setOpenVideoId={setOpenVideoId} />
-                }
-              )
+                })
           }
       </Container>
   );
