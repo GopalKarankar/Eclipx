@@ -154,7 +154,7 @@ const Navbar = ({toggleInfo, setToggleInfo, open, setOpen}) => {
   const handleQuery = async (e) => {
         try {
         
-          setQuery(e.target.value);
+          setQuery(e.target.value.trim());
 
           const res = await axios.get(`https://eclipx.onrender.com/api/videos/search?q=${query}`);
 
