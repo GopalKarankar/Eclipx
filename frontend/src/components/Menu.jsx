@@ -257,7 +257,10 @@ const Menu = ({ darkMode, setDarkMode, toggleInfo, setToggleInfo, open, setOpen 
 
             <i class="fa fa-copyright text-white ml-2"></i> Eclipx 
             <br />
-            <i class="fab fa-linkedin ml-2"></i> <span style={{color:"white"}} >Gopal Karankar</span>
+
+           <a href="www.linkedin.com/in/gopal-karankar-bb7730377">
+                <i class="fab fa-linkedin ml-2"></i> <span style={{color:"white"}} >Gopal Karankar</span>
+          </a> 
 
     </Container>
     </>
