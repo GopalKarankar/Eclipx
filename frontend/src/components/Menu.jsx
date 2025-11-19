@@ -258,9 +258,9 @@ const Menu = ({ darkMode, setDarkMode, toggleInfo, setToggleInfo, open, setOpen 
             <i class="fa fa-copyright text-white ml-2"></i> Eclipx 
             <br />
 
-           <Link to="https://www.linkedin.com/in/gopal-karankar-bb7730377">
+           <a href="https://www.linkedin.com/in/gopal-karankar-bb7730377" target="_blank" rel="noreferrer">
                 <i class="fab fa-linkedin ml-2"></i> <span style={{color:"white"}} >Gopal Karankar</span>
-          </Link> 
+          </a> 
 
     </Container>
     </>
