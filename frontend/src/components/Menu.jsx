@@ -239,7 +239,7 @@ const Menu = ({ darkMode, setDarkMode, toggleInfo, setToggleInfo, open, setOpen 
         { !currentUser ? (        
           <>
               <Login>
-              Sign in to like videos, comment, and subscribe.
+              Sign in to <br /> like videos, comment, <br /> and subscribe.
               <Link to="signin" style={{textDecoration:"none"}}>
                 <Button>
                   <AccountCircleOutlinedIcon />
