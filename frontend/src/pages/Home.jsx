@@ -4,6 +4,7 @@ import Card from "../components/Card";
 import axios from 'axios';
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Preloader from "../components/Preloader";
 
 
 const Container = styled.div`
@@ -75,9 +76,7 @@ const Home = ({type}) => {
 
   
   if (isLoading === true) {
-    return  <div style={{textAlign: "center"}}>
-                <p style={{color:"Green"}}>Loading...</p>
-            </div>;    
+    return <Preloader />;
   }
 
   if (video.length===0) {
