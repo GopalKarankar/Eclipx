@@ -120,7 +120,7 @@ const SignIn = () => {
 
       setInfo({
         ...info,
-        [name]:value,
+        [name]:value.trim(),
       });
   }
 

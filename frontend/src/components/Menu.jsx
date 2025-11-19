@@ -255,10 +255,9 @@ const Menu = ({ darkMode, setDarkMode, toggleInfo, setToggleInfo, open, setOpen 
 
       </Wrapper>
 
-
-            <i class="fa fa-copyright text-white"></i> Eclipx 
+            <i class="fa fa-copyright text-white ml-2"></i> Eclipx 
             <br />
-            <i class="fas fa-linkedin"></i> <span style={{color:"white"}} >Gopal Karankar</span>
+            <i class="fab fa-linkedin ml-2"></i> <span style={{color:"white"}} >Gopal Karankar</span>
 
     </Container>
     </>
