@@ -38,7 +38,7 @@ export const store = configureStore({
         },
       }),
 
-  devTools: true,
+      devTools: false,
 });
 
 export const persistor = persistStore(store);
