@@ -256,6 +256,12 @@ const Menu = ({ darkMode, setDarkMode, toggleInfo, setToggleInfo, open, setOpen 
       </Wrapper>
 
 
+        <h5>
+            Copyright @ Eclipx <i class="fa fa-copyright text-white"></i>
+            <br />
+            <i class="fa fa-linkedin"></i> <span style={{color:"white"}} >Gopal Karankar</span>
+        </h5>
+
     </Container>
     </>
 
