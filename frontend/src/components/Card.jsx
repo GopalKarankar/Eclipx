@@ -109,7 +109,7 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
     
         const fetchChannel = async () => {
           
-          const res = await axios.get(`https://eclipx.onrender.com/api/users/find/${video.userId}`);
+          const res = await axios.get(`https://eclipx.onrender.com/api/users/find/${video?.userId}`);
 
           setChannel(res?.data);
 
@@ -117,7 +117,7 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
         
         fetchChannel();
 
-    }, [type, dispatch, video.userId, currentUser]);
+    }, [type, dispatch, video?.userId, currentUser]);
 
     
 
@@ -130,18 +130,18 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
           // Unsave video
           if (currentUser.savedVideos.includes(video._id)) {
   
-              const res = await axios.put(`https://eclipx.onrender.com/api/users/unsavevideo/${video._id}`);
+              const res = await axios.put(`https://eclipx.onrender.com/api/users/unsavevideo/${video?._id}`);
               
-              dispatch(saved(video._id));
+              dispatch(saved(video?._id));
 
               setOpenVideoId(null);
             
           // Save video
           } else {
   
-              const res = await axios.put(`https://eclipx.onrender.com/api/users/savevideo/${video._id}`);
+              const res = await axios.put(`https://eclipx.onrender.com/api/users/savevideo/${video?._id}`);
               
-              dispatch(saved(video._id));
+              dispatch(saved(video?._id));
 
               setOpenVideoId(null);
               
@@ -164,9 +164,9 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
         
         if(confirmDelete){
 
-            const res = await axios.delete(`https://eclipx.onrender.com/api/videos/delete/${video._id}`);
+            const res = await axios.delete(`https://eclipx.onrender.com/api/videos/delete/${video?._id}`);
 
-            console.log(res.data);
+            console.log(res?.data);
 
             setOpenVideoId(null);
             
@@ -185,11 +185,11 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
   <>
       <Container type={type}>
 
-        <Link to={`/video/${video._id}`} style={{ textDecoration: "none" }} >
+        <Link to={`/video/${video?._id}`} style={{ textDecoration: "none" }} >
 
             <Image
               type={type}
-              src={video.imageUrl}
+              src={video?.imageUrl}
             />
 
         </Link>
@@ -198,13 +198,13 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
 
               <ChannelImage
                 type={type}
-                src={channel.img}
+                src={channel?.img}
               />
               
               <Texts>
-                <Title>{video.title}</Title>
+                <Title>{video?.title}</Title>
                 <ChannelName>{channel.name}</ChannelName>
-                <Info>{video.views} views • {format(video.createdAt)}</Info>
+                <Info>{video?.views} views • {format(video?.createdAt)}</Info>
               </Texts>
 
 
@@ -242,7 +242,7 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
                         }
 
                         {/* Share button */}
-                        <ShareButton url={`/video/${video._id}`}/>
+                        <ShareButton url={`/video/${video?._id}`}/>
 
 
 

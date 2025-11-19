@@ -144,7 +144,6 @@ const Navbar = ({toggleInfo, setToggleInfo, open, setOpen}) => {
 
   const currentUser = useSelector((state) => state?.user?.currentUser);
   
-  
   const [query, setQuery] = useState("");
   
   const [videoSugg, setVideoSugg] = useState([]);
@@ -187,6 +186,18 @@ const Navbar = ({toggleInfo, setToggleInfo, open, setOpen}) => {
       } catch (error) {
         console.log(error);
       }
+  }
+
+
+  const handleToggleInfo = async () =>{
+
+    setToggleInfo({
+                  ...toggleInfo,
+                  position:(toggleInfo.position === null ? ("fixed") : (null) ),
+                  left:(toggleInfo.left === null ? (0) : (null) ),
+                  zIndex:(toggleInfo.zIndex === null ? (1000) : (null) ),
+                })
+
   }
 
   return (
@@ -263,12 +274,7 @@ const Navbar = ({toggleInfo, setToggleInfo, open, setOpen}) => {
           
           ) }
 
-          <Togglebtn className="btn ml-5" onClick={()=>{setToggleInfo({
-              ...toggleInfo,
-              position:(toggleInfo.position === null ? ("fixed") : (null) ),
-              left:(toggleInfo.left === null ? (0) : (null) ),
-              zIndex:(toggleInfo.zIndex === null ? (1000) : (null) ),
-            })}}   >
+          <Togglebtn className="btn ml-5" onClick={handleToggleInfo}   >
 
               { toggleInfo.position === null ? (<i className="fa fa-bars"></i>):(<i className="fa-solid fa-x"></i>)}
           </Togglebtn>
