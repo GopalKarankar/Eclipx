@@ -203,8 +203,7 @@ const SignIn = () => {
   return (
     <Container>
       <Wrapper>
-        <Title>Sign in</Title>
-
+      
         <SubTitle>Sign in to continue to Eclipx</SubTitle>
         
         {/* <Input placeholder="username" name="username" type="text" value={info.name} onChange={ (e)=>{setUser(e)}  } />
