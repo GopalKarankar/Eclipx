@@ -102,6 +102,7 @@ const ItemUpld = styled.div`
 
 const Button = styled.button`
   padding: 5px 15px;
+  background-color: black;
   border: 1px solid #2c7b7d;
   color: #2c7b7d;
   border-radius: 3px;
