@@ -166,6 +166,8 @@ const Video = () => {
 
   const [LikeLoading, setLikeLoading] = useState(false);
 
+  const [DislikeLoading, setDislikeLoading] = useState(false);
+
 
 
 
@@ -247,7 +249,7 @@ const Video = () => {
         { withCredentials: true } 
       );
 
-      dispatch(like(currentUser?._id));
+          dispatch(like(currentUser?._id));
     
             setLikeLoading(false);
 
@@ -264,7 +266,7 @@ const Video = () => {
     
     try {
 
-      setLikeLoading(true);
+      setDislikeLoading(true);
 
       await axios.put(
         `https://eclipx.onrender.com/api/users/dislike/${video._id}`,
@@ -274,7 +276,7 @@ const Video = () => {
 
       dispatch(dislike(currentUser?._id));
 
-      setLikeLoading(false);
+      setDislikeLoading(false);
 
 
     } catch (error) {
@@ -400,11 +402,11 @@ const Video = () => {
                 {isLoggedIn && currentUser &&
                     <>
                       <Button onClick={handleLike}>
-                          { LikeLoading ? <SmallLoader /> : (video?.likes?.includes(currentUser?._id) ? <i className="fa-regular fa-thumbs-up "></i> :  <i className="fa-regular fa-thumbs-up  "></i> )} {video?.likes?.length}
+                          { LikeLoading ? "Liking..." : (video?.likes?.includes(currentUser?._id) ? <i className="fa-regular fa-thumbs-up "></i> :  <i className="fa-regular fa-thumbs-up  "></i> )} {video?.likes?.length}
                       </Button>
                     
                       <Button onClick={handleDislike}>
-                          { LikeLoading ? <SmallLoader /> : (video?.dislikes?.includes(currentUser?._id) ? <i className="fa-regular fa-thumbs-down  "></i> : <i className="fa-regular fa-thumbs-down"></i>)  } {video?.dislikes?.length}
+                          { DislikeLoading ? "Disliking..." : (video?.dislikes?.includes(currentUser?._id) ? <i className="fa-regular fa-thumbs-down  "></i> : <i className="fa-regular fa-thumbs-down"></i>)  } {video?.dislikes?.length}
                       </Button>
                     </>            
                 }
@@ -413,7 +415,7 @@ const Video = () => {
               
               {isLoggedIn && currentUser &&
                 <Button onClick={handleSave} >
-                  <AddTaskOutlinedIcon />{saveLoading ? (<SmallLoader />) : (video?.isSavedByUsers?.includes(currentUser?._id) ? "Unsave" : "Save")}
+                  <AddTaskOutlinedIcon />{saveLoading ? "Saving..." : (video?.isSavedByUsers?.includes(currentUser?._id) ? "Unsave" : "Save")}
                 </Button>          
               }
               

@@ -18,8 +18,8 @@ const TinyLoader = styled.div`
   transform: translate(-50%, -50%);
 
 
-  border: 2px solid white;
-  border-top-color: white;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-top-color: rgba(0, 0, 0, 0.7);
   border-radius: 50%;
   animation: ${spin} 0.5s linear infinite;
   display: inline-block;
