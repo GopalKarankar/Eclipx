@@ -64,6 +64,8 @@ const Comment = ({comment, setOpenCommentId, openCommentId, videoId}) => {
 
     const currentUser = useSelector(state=> state?.user?.currentUser);
 
+    const isLoggedIn = useSelector(state=> state?.user?.isLoggedIn);
+
     const [channel, setChannel] = useState({});
 
     const [openEditComment, setOpenEditComment] = useState(false);
@@ -136,7 +138,11 @@ const Comment = ({comment, setOpenCommentId, openCommentId, videoId}) => {
       </Details>
 
       {/* Ellipse option button */}
-      <Ellipse className="fa-solid fa-ellipsis-vertical fa-2x"  onClick={ ()=>{setOpenCommentId(open ? null : comment?._id); }}   ></Ellipse>
+
+      {
+        isLoggedIn &&
+
+        <Ellipse className="fa-solid fa-ellipsis-vertical fa-2x"  onClick={ ()=>{setOpenCommentId(open ? null : comment?._id); }}   ></Ellipse>
 
                     {/* Save, share, delete, edit container */} 
               {open && 
@@ -163,7 +169,8 @@ const Comment = ({comment, setOpenCommentId, openCommentId, videoId}) => {
                   </div>
               }
 
-       
+        }
+
        {openEditComment && <EditComment  setOpenCommentId={setOpenCommentId} videoId={videoId} setOpenEditComment={setOpenEditComment} comment={comment}  />}       
 
     </Container>
