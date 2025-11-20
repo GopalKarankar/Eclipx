@@ -200,7 +200,7 @@ const Video = () => {
         const channelRes = await axios.get(`https://eclipx.onrender.com/api/users/find/${video.userId}`);
 
         console.log("video user id : ", channelRes.data);
-        
+
         setChannel(channelRes.data);
 
       }catch(error){
@@ -211,7 +211,7 @@ const Video = () => {
 
     fetchData();
 
-  }, [channel]);
+  }, [video.userId, dispatch]);
 
 
       // Increse view count of video
@@ -312,7 +312,7 @@ const Video = () => {
 
         if (currentUser.savedVideos.includes(video._id)) {
 
-            const res = await axios.put(`https://eclipx.onrender.com/api/users/unsavevideo/${video._id}`);
+            await axios.put(`https://eclipx.onrender.com/api/users/unsavevideo/${video._id}`);
             
             dispatch(saved(video._id));
 
@@ -320,7 +320,7 @@ const Video = () => {
           
         } else {
 
-            const res = await axios.put(`https://eclipx.onrender.com/api/users/savevideo/${video._id}`);
+            await axios.put(`https://eclipx.onrender.com/api/users/savevideo/${video._id}`);
             
             dispatch(saved(video._id));
 
