@@ -209,7 +209,7 @@ const Video = () => {
 
     fetchData();
 
-  }, [video.userId, dispatch]);
+  }, [video.userId, dispatch, currentUser]);
 
 
       // Increse view count of video
