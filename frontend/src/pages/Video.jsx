@@ -206,9 +206,9 @@ const Video = () => {
 
       try{
         
-        const channelRes = await axios.get(`https://eclipx.onrender.com/api/users/find/${video.userId}`);
+        const channelRes = await axios.get(`https://eclipx.onrender.com/api/users/find/${video?.userId}`);
 
-        setChannel(channelRes.data);
+        setChannel(channelRes?.data);
 
       }catch(error){
           console.log(error);
@@ -218,7 +218,7 @@ const Video = () => {
 
     fetchData();
 
-  }, [video.userId, dispatch, currentUser]);
+  }, [video?.userId, dispatch, currentUser]);
 
 
       // Increse view count of video
