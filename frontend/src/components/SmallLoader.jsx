@@ -10,6 +10,14 @@ const spin = keyframes`
 const TinyLoader = styled.div`
   width: ${(props) => props.size || "14px"};
   height: ${(props) => props.size || "14px"};
+
+  /* For centering */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-top-color: rgba(0, 0, 0, 0.7);
   border-radius: 50%;

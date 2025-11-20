@@ -162,6 +162,10 @@ const Video = () => {
 
   const [subscribeLoading, setSubscribeLoading] = useState(false);
 
+  const [saveLoading, setSaveLoading] = useState(false);
+
+  const [LikeLoading, setLikeLoading] = useState(false);
+
 
 
 
@@ -234,6 +238,9 @@ const Video = () => {
   // for liking
   const handleLike = async () => {
     try {
+
+            setLikeLoading(true);
+
       await axios.put(
         `https://eclipx.onrender.com/api/users/like/${video?._id}`,
         {},
@@ -242,6 +249,9 @@ const Video = () => {
 
       dispatch(like(currentUser?._id));
     
+            setLikeLoading(false);
+
+
     } catch (error) {
       console.log(error);
     }
@@ -254,6 +264,8 @@ const Video = () => {
     
     try {
 
+      setLikeLoading(true);
+
       await axios.put(
         `https://eclipx.onrender.com/api/users/dislike/${video._id}`,
         {},
@@ -261,6 +273,9 @@ const Video = () => {
       );
 
       dispatch(dislike(currentUser?._id));
+
+      setLikeLoading(false);
+
 
     } catch (error) {
       console.log(error);
@@ -322,19 +337,24 @@ const Video = () => {
 
         if (currentUser.savedVideos.includes(video._id)) {
 
+            setSaveLoading(true);
+
             await axios.put(`https://eclipx.onrender.com/api/users/unsavevideo/${video._id}`);
             
             dispatch(saved(video._id));
 
-            // console.log(res);
+            setSaveLoading(false);
+
           
         } else {
+
+            setSaveLoading(true);
 
             await axios.put(`https://eclipx.onrender.com/api/users/savevideo/${video._id}`);
             
             dispatch(saved(video._id));
 
-            // console.log(res);
+            setSaveLoading(false);
           
         }
         
@@ -380,11 +400,11 @@ const Video = () => {
                 {isLoggedIn && currentUser &&
                     <>
                       <Button onClick={handleLike}>
-                          {video?.likes?.includes(currentUser?._id) ? <i className="fa-regular fa-thumbs-up "></i> :  <i className="fa-regular fa-thumbs-up  "></i> } {video?.likes?.length}
+                          { LikeLoading ? <SmallLoader /> : (video?.likes?.includes(currentUser?._id) ? <i className="fa-regular fa-thumbs-up "></i> :  <i className="fa-regular fa-thumbs-up  "></i> )} {video?.likes?.length}
                       </Button>
                     
                       <Button onClick={handleDislike}>
-                          {video?.dislikes?.includes(currentUser?._id) ? <i className="fa-regular fa-thumbs-down  "></i> : <i className="fa-regular fa-thumbs-down"></i>  } {video?.dislikes?.length}
+                          { LikeLoading ? <SmallLoader /> : (video?.dislikes?.includes(currentUser?._id) ? <i className="fa-regular fa-thumbs-down  "></i> : <i className="fa-regular fa-thumbs-down"></i>)  } {video?.dislikes?.length}
                       </Button>
                     </>            
                 }
@@ -393,7 +413,7 @@ const Video = () => {
               
               {isLoggedIn && currentUser &&
                 <Button onClick={handleSave} >
-                  <AddTaskOutlinedIcon />{video?.isSavedByUsers?.includes(currentUser?._id) ? "Unsave" : "Save"}
+                  <AddTaskOutlinedIcon />{saveLoading ? (<SmallLoader />) : (video?.isSavedByUsers?.includes(currentUser?._id) ? "Unsave" : "Save")}
                 </Button>          
               }
               
