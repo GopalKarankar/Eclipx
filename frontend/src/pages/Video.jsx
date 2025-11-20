@@ -10,6 +10,7 @@ import { dislike, fetchSuccess, like } from "../redux/videoSlice";
 import {format} from 'timeago.js';
 import { saved, subscription } from "../redux/userSlice";
 import ShareButton from "../components/ShareButton";
+import SmallLoader from "../components/SmallLoader";
 
 const Container = styled.div`
   display: flex;
@@ -159,6 +160,8 @@ const Video = () => {
 
   const [isViewCounted, setIsViewCounted] = useState(false);
 
+  const [subscribeLoading, setSubscribeLoading] = useState(false);
+
 
 
 
@@ -196,8 +199,6 @@ const Video = () => {
     const fetchData = async () =>{
 
       try{
-
-        console.log(video.userId);
         
         const channelRes = await axios.get(`https://eclipx.onrender.com/api/users/find/${video.userId}`);
 
@@ -276,6 +277,8 @@ const Video = () => {
 
             if (currentUser.subscribedUsers.includes(channel._id)){
 
+                setSubscribeLoading(true);
+
                 await axios.put(
                   `https://eclipx.onrender.com/api/users/unsub/${channel._id}`,
                     {},
@@ -284,7 +287,12 @@ const Video = () => {
 
                   dispatch(subscription(channel._id));
 
+                  setSubscribeLoading(false);
+
             }else{
+
+              
+                  setSubscribeLoading(true);
 
                   await axios.put(
                   `https://eclipx.onrender.com/api/users/sub/${channel._id}`,
@@ -293,6 +301,8 @@ const Video = () => {
                   );
 
                   dispatch(subscription(channel._id));
+
+                  setSubscribeLoading(false);
 
             }
 
@@ -406,7 +416,7 @@ const Video = () => {
               </ChannelInfo>
 
                     { isLoggedIn && currentUser &&
-                      <Subscribe onClick={handleSub} >{currentUser?.subscribedUsers?.includes(channel?._id) ? "SUBSCRIBED" : "SUBSCRIBE"}</Subscribe>                
+                      <Subscribe onClick={handleSub} >{ subscribeLoading ? (<SmallLoader />) : (currentUser?.subscribedUsers?.includes(channel?._id) ? "SUBSCRIBED" : "SUBSCRIBE")}</Subscribe>                
                     }
             
             </Channel>
