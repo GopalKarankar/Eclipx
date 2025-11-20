@@ -199,6 +199,8 @@ const Video = () => {
 
         const channelRes = await axios.get(`https://eclipx.onrender.com/api/users/find/${video.userId}`);
 
+        console.log("video user id : ", channelRes.data);
+        
         setChannel(channelRes.data);
 
       }catch(error){
