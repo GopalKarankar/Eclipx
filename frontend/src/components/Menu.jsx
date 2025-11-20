@@ -128,7 +128,7 @@ font-size: 30px;
 
 
 
-const Menu = ({ darkMode, setDarkMode, toggleInfo, setToggleInfo, open, setOpen }) => {
+const Menu = ({ darkMode, setDarkMode, toggleInfo, setToggleInfo, handleToggleInfo, open, setOpen }) => {
 
 
     const dispatch = useDispatch();
@@ -151,7 +151,7 @@ const Menu = ({ darkMode, setDarkMode, toggleInfo, setToggleInfo, open, setOpen 
       <Wrapper>
 
 
-        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }} onClick={handleToggleInfo} >
           <Logo>
             <Img src={Eclipx} alt="" />
             <LogoName >Eclipx</LogoName>
@@ -188,7 +188,7 @@ const Menu = ({ darkMode, setDarkMode, toggleInfo, setToggleInfo, open, setOpen 
               </ItemUpld>           
             }
 
-        <Link to="/" style={{textDecoration:"none", color: "inherit" }}>
+        <Link to="/" style={{textDecoration:"none", color: "inherit" }} onClick={handleToggleInfo} >
             <Item>
               <HomeIcon />
                   Home
@@ -196,26 +196,29 @@ const Menu = ({ darkMode, setDarkMode, toggleInfo, setToggleInfo, open, setOpen 
         </Link>
 
 
-        <Link to="trend" style={{textDecoration:"none", color: "inherit" }}>
+        <Link to="trend" style={{textDecoration:"none", color: "inherit" }} onClick={handleToggleInfo} >
             <Item>
                 <ExploreOutlinedIcon />
                 Explore
             </Item>
         </Link>
 
-        <Link to="subscriptions" style={{textDecoration:"none", color: "inherit" }}>
-          <Item>
-            <SubscriptionsOutlinedIcon />
-            Subscriptions
-          </Item>
-            <Hr />
-        </Link>
+            {
+              isLoggedIn  &&
+                    <Link to="subscriptions" style={{textDecoration:"none", color: "inherit" }} onClick={handleToggleInfo} >
+                      <Item>
+                        <SubscriptionsOutlinedIcon />
+                        Subscriptions
+                      </Item>
+                        <Hr />
+                    </Link>
+            }
 
         {isLoggedIn && 
 
           <>
 
-            <Link to="myvideos" style={{textDecoration:"none", color: "inherit" }}>
+            <Link to="myvideos" style={{textDecoration:"none", color: "inherit" }} onClick={handleToggleInfo} >
               <Item>
                     <i className="fa-regular fa-circle-play ml-1"></i>                  
                     My Videos
@@ -223,7 +226,7 @@ const Menu = ({ darkMode, setDarkMode, toggleInfo, setToggleInfo, open, setOpen 
             </Link>
           
         
-            <Link to="saved" style={{textDecoration:"none", color: "inherit" }}>
+            <Link to="saved" style={{textDecoration:"none", color: "inherit" }} onClick={handleToggleInfo} >
               <Item>
                   <i className="fa-solid fa-bookmark ml-2 mr-1"></i>
                 Saved
@@ -240,7 +243,7 @@ const Menu = ({ darkMode, setDarkMode, toggleInfo, setToggleInfo, open, setOpen 
           <>
               <Login>
               Sign in to <br /> like videos, comment, <br /> and subscribe.
-              <Link to="signin" style={{textDecoration:"none"}}>
+              <Link to="signin" style={{textDecoration:"none"}} onClick={handleToggleInfo} >
                 <Button>
                   <AccountCircleOutlinedIcon />
                  SIGN IN
@@ -249,9 +252,9 @@ const Menu = ({ darkMode, setDarkMode, toggleInfo, setToggleInfo, open, setOpen 
             </Login>
             <Hr />
         </>
-        ) : <> <span onClick={()=>{ dispatch(logout()); navigate("/"); }}  ><i className="fa-solid fa-right-from-bracket " ></i> <span style={{cursor:"default"}} >Log out</span> </span> <br /> <br /> </>}
+        ) : <> <span onClick={()=>{ dispatch(logout()); navigate("/"); handleToggleInfo();  }}  ><i className="fa-solid fa-right-from-bracket " ></i> <span style={{cursor:"default"}} >Log out</span> </span> <br /> <br /> </>}
         
-
+ 
 
       </Wrapper>
 

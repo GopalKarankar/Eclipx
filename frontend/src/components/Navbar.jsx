@@ -140,7 +140,7 @@ const Togglebtn = styled.button`
 
 `;
 
-const Navbar = ({toggleInfo, setToggleInfo, open, setOpen}) => {
+const Navbar = ({  handleToggleInfo, toggleInfo, open, setOpen}) => {
 
   const currentUser = useSelector((state) => state?.user?.currentUser);
   
@@ -188,17 +188,6 @@ const Navbar = ({toggleInfo, setToggleInfo, open, setOpen}) => {
       }
   }
 
-
-  const handleToggleInfo = async () =>{
-
-    setToggleInfo({
-                  ...toggleInfo,
-                  position:(toggleInfo.position === null ? ("fixed") : (null) ),
-                  left:(toggleInfo.left === null ? (0) : (null) ),
-                  zIndex:(toggleInfo.zIndex === null ? (1000) : (null) ),
-                })
-
-  }
 
   return (
     <>

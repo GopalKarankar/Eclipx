@@ -40,18 +40,30 @@ function App() {
   const [open, setOpen] = useState(false);
 
 
+  
+    const handleToggleInfo = async () =>{
+  
+          setToggleInfo({
+                        ...toggleInfo,
+                        position:(toggleInfo.position === null ? ("fixed") : (null) ),
+                        left:(toggleInfo.left === null ? (0) : (null) ),
+                        zIndex:(toggleInfo.zIndex === null ? (1000) : (null) ),
+                      })
+    }
+  
+
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-    
+      handleToggleInfo={handleToggleInfo}  
       <Container>
 
         <BrowserRouter>
           
-          <Menu open={open} setOpen={setOpen} darkMode={darkMode} setDarkMode={setDarkMode} toggleInfo={toggleInfo} setToggleInfo={setToggleInfo} />
+          <Menu open={open} setOpen={setOpen}   handleToggleInfo={handleToggleInfo} toggleInfo={toggleInfo}   />
 
           <Main>
 
-            <Navbar open={open} setOpen={setOpen}  toggleInfo={toggleInfo} setToggleInfo={setToggleInfo}  />
+            <Navbar open={open} setOpen={setOpen}/>
           
             <Wrapper>
 
