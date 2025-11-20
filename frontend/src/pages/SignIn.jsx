@@ -163,9 +163,10 @@ const SignIn = () => {
   
     dispatch(loginStart());
 
-    setSigninLoading(true);
 
     signInWithPopup(auth, provider).then((result)=>{
+
+      setSigninLoading(true);
 
        axios.post(`https://eclipx.onrender.com/api/auth/google/`,{
       
@@ -212,7 +213,7 @@ const SignIn = () => {
         <Button onClick={handleLogin} >{ signinLoading ? "Sigining in... " : "Sign in"}</Button>
         
         <Title>or</Title>
-        <Button onClick={signInWithGoogle}> <Glogo src={GoogleLogo} alt="" />{ signinLoading ? "Sigining in... " : "Sign in with google"}</Button>
+        <Button onClick={signInWithGoogle}>{ signinLoading ? <> <Glogo src={GoogleLogo} alt="" />Sigining in... </> : "Sign in with google"}</Button>
 
       </Wrapper>
       <More>
