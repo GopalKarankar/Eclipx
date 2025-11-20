@@ -186,7 +186,7 @@ const Video = () => {
 
     fetchData();
 
-  }, [path]);
+  }, [path, dispatch]);
 
 
   // Run on page visit , or any value change
@@ -209,7 +209,7 @@ const Video = () => {
 
     fetchData();
 
-  }, [path]);
+  }, [channel]);
 
 
       // Increse view count of video
