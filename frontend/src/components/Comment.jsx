@@ -141,6 +141,8 @@ const Comment = ({comment, setOpenCommentId, openCommentId, videoId}) => {
 
       {
         isLoggedIn &&
+        
+        <>
 
         <Ellipse className="fa-solid fa-ellipsis-vertical fa-2x"  onClick={ ()=>{setOpenCommentId(open ? null : comment?._id); }}   ></Ellipse>
 
@@ -168,8 +170,8 @@ const Comment = ({comment, setOpenCommentId, openCommentId, videoId}) => {
 
                   </div>
               }
-
-        }
+            </>
+          }
 
        {openEditComment && <EditComment  setOpenCommentId={setOpenCommentId} videoId={videoId} setOpenEditComment={setOpenEditComment} comment={comment}  />}       
 
