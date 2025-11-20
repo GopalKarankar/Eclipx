@@ -55,7 +55,7 @@ function App() {
 
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-      handleToggleInfo={handleToggleInfo}  
+
       <Container>
 
         <BrowserRouter>
