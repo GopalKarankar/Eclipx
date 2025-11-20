@@ -207,11 +207,11 @@ const SignIn = () => {
 
         <SubTitle>Sign in to continue to Eclipx</SubTitle>
         
-        <Input placeholder="username" name="username" type="text" value={info.name} onChange={ (e)=>{setUser(e)}  } />
+        {/* <Input placeholder="username" name="username" type="text" value={info.name} onChange={ (e)=>{setUser(e)}  } />
         <Input type="password" placeholder="password" name="password"  value={info.password} onChange={(e)=>{setUser(e)}} autoComplete="off"  />
         <Button onClick={handleLogin} >{ signinLoading ? "Sigining in... " : "Sign in"}</Button>
         
-        <Title>or</Title>
+        <Title>or</Title> */}
         <Button onClick={signInWithGoogle}>{ signinLoading ?   "Sigining in... " : <><Glogo src={GoogleLogo} alt="" /> Sign in with google </>}</Button>
 
       </Wrapper>
