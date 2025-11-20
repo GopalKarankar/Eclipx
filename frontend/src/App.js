@@ -27,6 +27,7 @@ const Wrapper = styled.div`
 function App() {
 
   const [darkMode, setDarkMode] = useState(true);
+
   const [toggleInfo, setToggleInfo] = useState({
 
     position:null,
@@ -63,7 +64,7 @@ function App() {
 
           <Main>
 
-            <Navbar open={open} setOpen={setOpen}/>
+            <Navbar open={open} setOpen={setOpen}   handleToggleInfo={handleToggleInfo}  toggleInfo={toggleInfo}   />
           
             <Wrapper>
 
