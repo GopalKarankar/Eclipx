@@ -147,7 +147,6 @@ const Video = () => {
 
   const currentUser = useSelector(state=> state?.user?.currentUser);
   const currentVideo = useSelector(state=> state?.video?.currentVideo);
-  console.log("CurrentVideo",currentVideo);
   const isLoggedIn = useSelector(state=> state?.user?.isLoggedIn);  
 
   const dispatch = useDispatch();
@@ -187,7 +186,7 @@ const Video = () => {
 
     fetchData();
 
-  }, [path, dispatch]);
+  }, [path, dispatch, currentVideo]);
 
 
   // Run on page visit , or any value change
@@ -199,8 +198,6 @@ const Video = () => {
       try{
 
         const channelRes = await axios.get(`https://eclipx.onrender.com/api/users/find/${video.userId}`);
-
-        console.log("video user id : ", channelRes.data);
 
         setChannel(channelRes.data);
 
