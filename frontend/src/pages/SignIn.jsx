@@ -100,9 +100,12 @@ const SignIn = () => {
 
   const currentUser = useSelector(state => state?.user);
 
+  const [signinLoading, setSigninLoading] = useState(false);
+
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
+  
 
   // console.log(currentUser.isLoggedIn);
 
@@ -127,11 +130,14 @@ const SignIn = () => {
   // console.log(info);
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+
+      e.preventDefault();
 
       dispatch(loginStart());
 
       try{
+
+        setSigninLoading(true);
 
           const res = await axios.post(`https://eclipx.onrender.com/api/auth/signin/`, {
               name: info.username,
@@ -141,6 +147,8 @@ const SignIn = () => {
             dispatch(loginSuccess(res.data.excludePasswordInfo));
 
             console.log("Sign in : ",res.data.excludePasswordInfo);
+
+            setSigninLoading(false);
 
             navigate("/");
 
@@ -154,6 +162,8 @@ const SignIn = () => {
   const signInWithGoogle = async () => {
   
     dispatch(loginStart());
+
+    setSigninLoading(true);
 
     signInWithPopup(auth, provider).then((result)=>{
 
@@ -178,6 +188,8 @@ const SignIn = () => {
       })
 
       navigate("/");
+
+      setSigninLoading(false);
     
     }).catch((error)=>{
     
@@ -197,10 +209,10 @@ const SignIn = () => {
         
         <Input placeholder="username" name="username" type="text" value={info.name} onChange={ (e)=>{setUser(e)}  } />
         <Input type="password" placeholder="password" name="password"  value={info.password} onChange={(e)=>{setUser(e)}} autoComplete="off"  />
-        <Button onClick={handleLogin} >Sign in</Button>
+        <Button onClick={handleLogin} >{ signinLoading ? "Sigining in... " : "Sign in"}</Button>
         
         <Title>or</Title>
-        <Button onClick={signInWithGoogle}> <Glogo src={GoogleLogo} alt="" />  Sign in with google</Button>
+        <Button onClick={signInWithGoogle}> <Glogo src={GoogleLogo} alt="" />{ signinLoading ? "Sigining in... " : "Sign in with google"}</Button>
 
       </Wrapper>
       <More>
