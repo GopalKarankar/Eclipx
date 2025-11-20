@@ -2,13 +2,10 @@ import styled from "styled-components";
 import HomeIcon from "@mui/icons-material/Home";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/userSlice";
 import Eclipx from './../img/Eclipx.png';
-import zIndex from "@mui/material/styles/zIndex";
-import { useState } from "react";
 
 
 const Container = styled.div`
@@ -106,8 +103,8 @@ const ItemUpld = styled.div`
 const Button = styled.button`
   padding: 5px 15px;
   background-color: transparent;
-  border: 1px solid #3ea6ff;
-  color: #3ea6ff;
+  border: 1px solid #2c7b7d;
+  color: #2c7b7d;
   border-radius: 3px;
   font-weight: 500;
   margin-top: 10px;
@@ -116,7 +113,7 @@ const Button = styled.button`
   align-items: center;
   gap: 5px;
 `;
-
+ 
 const Img = styled.img`
   width: 70px;
   height: 70px;
@@ -243,9 +240,8 @@ const Menu = ({ darkMode, setDarkMode, toggleInfo, setToggleInfo, handleToggleIn
           <>
               <Login>
               Sign in to <br /> like videos, comment, <br /> and subscribe.
-              <Link to="signin" style={{textDecoration:"none"}} onClick={handleToggleInfo} >
+              <Link to="signin" style={{textDecoration:"none" }} onClick={handleToggleInfo}  >
                 <Button>
-                  <AccountCircleOutlinedIcon />
                  SIGN IN
                 </Button>
               </Link>
@@ -261,7 +257,7 @@ const Menu = ({ darkMode, setDarkMode, toggleInfo, setToggleInfo, handleToggleIn
             <i class="fa fa-copyright text-white ml-2"></i> Eclipx 
             <br />
 
-           <a href="https://www.linkedin.com/in/gopal-karankar-bb7730377" target="_blank" rel="noopener noreferrer">
+           <a href="https://www.linkedin.com/in/gopal-karankar-bb7730377" style={{textDecoration:"none"}} target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-linkedin ml-2"></i> <span style={{color:"white"}} >Gopal Karankar</span>
           </a> 
 
