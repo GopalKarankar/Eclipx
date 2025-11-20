@@ -438,7 +438,7 @@ const Video = () => {
               </ChannelInfo>
 
                     { isLoggedIn && currentUser &&
-                      <Subscribe onClick={handleSub} >{ subscribeLoading ? (<SmallLoader />) : (currentUser?.subscribedUsers?.includes(channel?._id) ? "SUBSCRIBED" : "SUBSCRIBE")}</Subscribe>                
+                      <Subscribe onClick={handleSub} >{ subscribeLoading ? "Subscribing..." : (currentUser?.subscribedUsers?.includes(channel?._id) ? "SUBSCRIBED" : "SUBSCRIBE")}</Subscribe>                
                     }
             
             </Channel>
