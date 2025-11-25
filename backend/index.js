@@ -16,7 +16,7 @@ dotenv.config();
 // Connect with mongoDB database
 const connect = () => {
 
-    mongoose.connect(process.env.MONGOCONN)
+    mongoose.connect(process.env.REACT_APP_MONGOCONN)
     .then(()=>{
         console.log("Connected to mongodb.");
         }
@@ -32,7 +32,7 @@ const connect = () => {
 
 // Allow requests from React frontend
 app.use(cors({
-  origin: "https://eclipx-cznr.onrender.com", // frontend origin
+  origin: process.env.REACT_APP_FRONTEND_URI, // frontend origin
   methods: ["GET", "POST", "PUT", "DELETE"], // allowed methods
   credentials: true // allows cookies/auth headers
 }));

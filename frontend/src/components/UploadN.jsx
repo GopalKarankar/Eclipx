@@ -5,8 +5,8 @@ import styled from 'styled-components';
 // const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
 // const BUCKET = "your-bucket-name";
 
-const SUPABASE_URL = "https://qaptekeguowshtiumgnb.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFhcHRla2VndW93c2h0aXVtZ25iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAxNTQzMDgsImV4cCI6MjA3NTczMDMwOH0.CZzwUa5CKRD0idV2bUvuzxZcpNH48oc-OFUKx87HxYM";
+const SUPABASE_URL = `${process.env.REACT_APP_SUPABASE_PUBLIC_URL}`;
+const SUPABASE_ANON_KEY = `${process.env.REACT_APP_SUPABASE_ANON_KEY}`;
 const BUCKET = "video";
 
 

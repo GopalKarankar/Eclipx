@@ -58,7 +58,7 @@ const Home = ({type}) => {
 
       const fetchVideos = async () => {          
 
-          const res = await axios.get(`https://eclipx.onrender.com/api/videos/${type}/`);
+          const res = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/api/videos/${type}/`);
 
           setVideo(res.data);
 

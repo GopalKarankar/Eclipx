@@ -179,8 +179,8 @@ const Video = () => {
 
       try{
 
-        const videoRes = await axios.get(`https://eclipx.onrender.com/api/videos/find/${path}`);
-        // const channelRes = await axios.get(`https://eclipx.onrender.com/api/users/find/${videoRes.data.userId}`);
+        const videoRes = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/api/videos/find/${path}`);
+        // const channelRes = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/api/users/find/${videoRes.data.userId}`);
 
         dispatch(fetchSuccess(videoRes.data));
 
@@ -206,7 +206,7 @@ const Video = () => {
 
       try{
         
-        const channelRes = await axios.get(`https://eclipx.onrender.com/api/users/find/${video?.userId}`);
+        const channelRes = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/api/users/find/${video?.userId}`);
 
         setChannel(channelRes?.data);
 
@@ -224,7 +224,7 @@ const Video = () => {
       // Increse view count of video
     const incrViewCount = async () => {
 
-        await axios.put(`https://eclipx.onrender.com/api/videos/view/${video?._id}`,
+        await axios.put(`${process.env.REACT_APP_BACKEND_URI}/api/videos/view/${video?._id}`,
           {
 
           },
@@ -244,7 +244,7 @@ const Video = () => {
             setLikeLoading(true);
 
       await axios.put(
-        `https://eclipx.onrender.com/api/users/like/${video?._id}`,
+        `${process.env.REACT_APP_BACKEND_URI}/api/users/like/${video?._id}`,
         {},
         { withCredentials: true } 
       );
@@ -269,7 +269,7 @@ const Video = () => {
       setDislikeLoading(true);
 
       await axios.put(
-        `https://eclipx.onrender.com/api/users/dislike/${video._id}`,
+        `${process.env.REACT_APP_BACKEND_URI}/api/users/dislike/${video._id}`,
         {},
         { withCredentials: true } 
       );
@@ -297,7 +297,7 @@ const Video = () => {
                 setSubscribeLoading(true);
 
                 await axios.put(
-                  `https://eclipx.onrender.com/api/users/unsub/${channel._id}`,
+                  `${process.env.REACT_APP_BACKEND_URI}/api/users/unsub/${channel._id}`,
                     {},
                     { withCredentials: true } 
                   );
@@ -312,7 +312,7 @@ const Video = () => {
                   setSubscribeLoading(true);
 
                   await axios.put(
-                  `https://eclipx.onrender.com/api/users/sub/${channel._id}`,
+                  `${process.env.REACT_APP_BACKEND_URI}/api/users/sub/${channel._id}`,
                     {},
                     { withCredentials: true } 
                   );
@@ -341,7 +341,7 @@ const Video = () => {
 
             setSaveLoading(true);
 
-            await axios.put(`https://eclipx.onrender.com/api/users/unsavevideo/${video._id}`);
+            await axios.put(`${process.env.REACT_APP_BACKEND_URI}/api/users/unsavevideo/${video._id}`);
             
             dispatch(saved(video._id));
 
@@ -352,7 +352,7 @@ const Video = () => {
 
             setSaveLoading(true);
 
-            await axios.put(`https://eclipx.onrender.com/api/users/savevideo/${video._id}`);
+            await axios.put(`${process.env.REACT_APP_BACKEND_URI}/api/users/savevideo/${video._id}`);
             
             dispatch(saved(video._id));
 

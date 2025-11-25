@@ -10,13 +10,13 @@ import { useNavigate } from 'react-router-dom';
 
 // Initialize Supabase client
 const supabase = createClient(
-  "https://qaptekeguowshtiumgnb.supabase.co", //public url
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFhcHRla2VndW93c2h0aXVtZ25iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAxNTQzMDgsImV4cCI6MjA3NTczMDMwOH0.CZzwUa5CKRD0idV2bUvuzxZcpNH48oc-OFUKx87HxYM"
+  `${process.env.REACT_APP_SUPABASE_PUBLIC_URL}`, //public url
+  `${process.env.REACT_APP_SUPABASE_ANON_KEY}`
   //Anon key
 );
 
 // Base CDN URL for public bucket
-const CDNURL = "https://qaptekeguowshtiumgnb.supabase.co/storage/v1/object/public/video/";
+const CDNURL = `${process.env.REACT_APP_SUPABASE_CDN_URL}`;
 
 
 
@@ -183,7 +183,7 @@ export const Upload = ({setOpen}) => {
 
                 console.log("Details uploaded successfully.");
 
-                await axios.post(`https://eclipx.onrender.com/api/videos/`,
+                await axios.post(`${process.env.REACT_APP_BACKEND_URI}/api/videos/`,
                     {
                         title:title,
                         desc:desc,

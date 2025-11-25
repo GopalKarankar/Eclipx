@@ -139,7 +139,7 @@ const SignIn = () => {
 
         setSigninLoading(true);
 
-          const res = await axios.post(`https://eclipx.onrender.com/api/auth/signin/`, {
+          const res = await axios.post(`${process.env.REACT_APP_BACKEND_URI}/api/auth/signin/`, {
               name: info.username,
               password: info.password
             });
@@ -167,7 +167,7 @@ const SignIn = () => {
 
     signInWithPopup(auth, provider).then((result)=>{
 
-       axios.post(`https://eclipx.onrender.com/api/auth/google/`,{
+       axios.post(`${process.env.REACT_APP_BACKEND_URI}/api/auth/google/`,{
       
         name:result.user.displayName,
         email:result.user.email,
