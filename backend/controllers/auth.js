@@ -94,6 +94,8 @@ export const googleAuth = async (req, res, next) => {
               // Create token to be joint with cookie with expiry (30 days)
               const token = jwt.sign({ id: user._id }, process.env.JWT_PRIVATE_KEY, { expiresIn: "30d" });                      
               
+              console.log(process.env.JWT_PRIVATE_KEY);
+
               // Exclude password from user info
               const {password , ...excludePasswordInfo} = user._doc;
 
