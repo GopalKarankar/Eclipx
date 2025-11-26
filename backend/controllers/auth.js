@@ -115,10 +115,7 @@ export const googleAuth = async (req, res, next) => {
               console.log("newuser : ",newUser);
 
               // Save info to database
-              const savedUser = await newUser.save();
-
-              console.log(db.users.getIndexes());
-              
+              const savedUser = await newUser.save();              
 
               const token = jwt.sign({ id: savedUser._id }, process.env.JWT_PRIVATE_KEY, { expiresIn: "30d" });
                               
