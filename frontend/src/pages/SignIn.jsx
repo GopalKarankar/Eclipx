@@ -181,7 +181,7 @@ const SignIn = () => {
       
         dispatch(loginSuccess(res.data));
         
-        // console.log("google log in info : ", res.data );
+        console.log("google log in info : ", res.data );
       
       })
 
