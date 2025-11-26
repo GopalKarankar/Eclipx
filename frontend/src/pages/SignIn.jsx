@@ -180,9 +180,7 @@ const SignIn = () => {
     ).then((res)=>{
       
         dispatch(loginSuccess(res.data));
-        
-        console.log("google log in info : ", res.data );
-      
+              
       })
 
 
