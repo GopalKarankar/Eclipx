@@ -117,7 +117,7 @@ export const googleAuth = async (req, res, next) => {
               // Save info to database
               const savedUser = await newUser.save();              
 
-              const token = jwt.sign({ id: savedUser._id }, process.env.JWT_PRIVATE_KEY, { expiresIn: "30d" });
+              const token = jwt.sign({ id: savedUser._id }, process.env.REACT_APP_JWT_PRIVATE_KEY, { expiresIn: "30d" });
                               
               const {password , ...excludePasswordInfo} = savedUser._doc;
 
