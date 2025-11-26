@@ -167,7 +167,7 @@ const SignIn = () => {
 
     signInWithPopup(auth, provider).then((result)=>{
 
-       axios.post(`https://eclipx.onrender.com/api/auth/google/`,{
+       axios.post(`${process.env.REACT_APP_BACKEND_URI}/api/auth/google/`,{
       
         name:result.user.displayName,
         email:result.user.email,
