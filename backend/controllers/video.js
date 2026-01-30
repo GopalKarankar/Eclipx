@@ -37,6 +37,8 @@ export const addVideo = async (req, res, next) => {
 
 export const updateVideo = async (req, res, next) => {
 
+    console.log(req.params.id);
+    
     try{
         const video = await Video.findById(req.params.id);
 
