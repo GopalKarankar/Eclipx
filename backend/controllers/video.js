@@ -72,7 +72,7 @@ export const updateVideo = async (req, res, next) => {
 
 export const deleteVideo = async (req, res, next) => {
 
-console.log("Video id : ",req.params.id);
+console.log("Video id : ",req);
 
     try{
         const video = await Video.findById(req.params.id);

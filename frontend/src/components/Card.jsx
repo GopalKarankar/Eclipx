@@ -157,7 +157,7 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
 
     // Delete video
     const deleteVideo = async () => {
-      
+      console.log(video?._id);
       try {
 
         const confirmDelete = window.confirm("Are you sure you want to delete this ?");
