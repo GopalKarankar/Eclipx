@@ -11,6 +11,8 @@ export const verifyToken =  (req, res, next) =>{
 
         console.log("Token : ",token);
 
+        console.log("jwt private key : ",process.env.JWT_PRIVATE_KEY)
+
         if (!token) {
              return next(createError(401,"You are not authenticated"));
         }
@@ -29,7 +31,7 @@ export const verifyToken =  (req, res, next) =>{
         });
 
     }catch(err){
-        console.log(err);
+        console.log("error : ",err);
         next(err);
     }
 
