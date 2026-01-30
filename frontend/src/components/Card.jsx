@@ -157,7 +157,7 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
 
     // Delete video
     const deleteVideo = async () => {
-      console.log(video?._id);
+      // console.log(video?._id);
       try {
 
         const confirmDelete = window.confirm("Are you sure you want to delete this ?");
@@ -166,7 +166,7 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
 
             const res = await axios.delete(`${process.env.REACT_APP_BACKEND_URI}/api/videos/delete/${video?._id}`);
 
-            console.log(res?.data);
+            // console.log(res?.data);
 
             setOpenVideoId(null);
             
