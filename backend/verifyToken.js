@@ -11,13 +11,13 @@ export const verifyToken =  (req, res, next) =>{
 
         console.log("Token : ",token);
 
-        console.log("jwt private key : ",process.env.JWT_PRIVATE_KEY)
+        console.log("jwt private key : ",process.env.REACT_APP_JWT_PRIVATE_KEY)
 
         if (!token) {
              return next(createError(401,"You are not authenticated"));
         }
 
-        jwt.verify(token, process.env.JWT_PRIVATE_KEY ,  (err, decode)=>{
+        jwt.verify(token, process.env.REACT_APP_JWT_PRIVATE_KEY ,  (err, decode)=>{
 
             if (err) {
                 return next(createError(403,"Token is not valid"));                
