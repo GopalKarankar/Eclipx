@@ -10,7 +10,6 @@ import { dislike, fetchSuccess, like } from "../redux/videoSlice";
 import {format} from 'timeago.js';
 import { saved, subscription } from "../redux/userSlice";
 import ShareButton from "../components/ShareButton";
-import SmallLoader from "../components/SmallLoader";
 
 const Container = styled.div`
   display: flex;

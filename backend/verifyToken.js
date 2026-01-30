@@ -12,7 +12,7 @@ export const verifyToken =  (req, res, next) =>{
         console.log(token);
 
         if (!token) {
-             next(createError(401,"You are not authenticated"));
+             return next(createError(401,"You are not authenticated"));
         }
 
         jwt.verify(token, process.env.JWT_PRIVATE_KEY ,  (err, decode)=>{
