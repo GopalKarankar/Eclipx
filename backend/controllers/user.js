@@ -91,6 +91,7 @@ export const getUser = async (req, res, next) =>{
 
 export const subscribe = async (req, res, next) =>{
 
+    console.log(req);
 
         try{
 
@@ -114,6 +115,8 @@ export const subscribe = async (req, res, next) =>{
 
 
 export const unSubscribe = async (req, res, next) =>{
+
+    console.log(req);
 
         try{
 
@@ -139,6 +142,8 @@ export const unSubscribe = async (req, res, next) =>{
 
 export const like = async (req, res, next) =>{
 
+    console.log(req);
+
         const id = req.user.id;
         const videoId = req.params.videoId;
 
@@ -160,6 +165,8 @@ export const like = async (req, res, next) =>{
 
 
 export const dislike = async (req, res, next) =>{
+
+    console.log(req);
 
         const id = req.user.id;
         const videoId = req.params.videoId;
@@ -183,6 +190,8 @@ export const dislike = async (req, res, next) =>{
 
 // save video
 export const saveVideo = async (req, res, next) => {
+
+    console.log(req);
 
     try {
 
@@ -209,6 +218,8 @@ export const saveVideo = async (req, res, next) => {
 
 // Unsave videos
 export const unsaveVideo = async (req, res, next) => {
+
+    console.log(req);
 
     try {
 
