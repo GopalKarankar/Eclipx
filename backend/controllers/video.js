@@ -72,6 +72,7 @@ export const updateVideo = async (req, res, next) => {
 
 export const deleteVideo = async (req, res, next) => {
 
+console.log("Video id : ",req.params.id);
 
     try{
         const video = await Video.findById(req.params.id);
@@ -91,7 +92,7 @@ export const deleteVideo = async (req, res, next) => {
     }catch(error){
 
         console.log(error);
-        next(createError(403,"You can only delete  your account."));
+        next(createError(403,"Only you can  delete  your account."));
 
     }    
 

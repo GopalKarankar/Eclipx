@@ -164,7 +164,7 @@ const Card = ({ type, video, openVideoId, setOpenVideoId }) => {
         
         if(confirmDelete){
 
-            const res = await axios.delete(`process.env.REACT_APP_BACKEND_URI/api/videos/delete/${video?._id}`);
+            const res = await axios.delete(`${process.env.REACT_APP_BACKEND_URI}/api/videos/delete/${video?._id}`);
 
             console.log(res?.data);
 
